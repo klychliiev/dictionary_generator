@@ -1,0 +1,137 @@
+Статистичні маніпуляції з даними в БД SQL:
+SELECT pos_type, COUNT(*) FROM words GROUP BY pos_type; - підрахунок і групування слів за частиномовною належністю
+SELECT lemma, COUNT(*) FROM words GROUP BY lemma ORDER BY COUNT(*) DESC LIMIT 20; - підрахунок частоти для всіх слів тексту і відображення 20 найчастотніших з них
+
+1. Статистика для роману "Тигролови" Івана Багряного:
+klychliievfx@klychliievfx-IdeaPad-3-15IML05:~/projects/words_dictionary$ sqlite3
+SQLite version 3.35.5 2021-04-19 18:32:05
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> .open my_db.db
+sqlite> SELECT pos_type, COUNT(*) FROM words GROUP BY pos_type;
+ADJ|307
+ADP|294
+ADV|289
+AUX|18
+CCONJ|205
+DET|111
+INTJ|2
+NOUN|677
+NUM|12
+PART|184
+PRON|220
+PROPN|40
+PUNCT|16
+SCONJ|94
+VERB|531
+sqlite> SELECT lemma, COUNT(*) FROM words GROUP BY lemma ORDER BY COUNT(*) DESC LIMIT 20;
+на|70
+він|70
+не|65
+й|56
+та|53
+і|49
+з|49
+в|46
+а|46
+як|36
+що|36
+у|28
+вона|28
+ти|26
+око|23
+до|23
+то|17
+такий|17
+парубок|17
+ні|17
+
+2. Статистика для повісті "Кайдашева сімʼя" Івана Нечуя-Левицького:
+sqlite> SELECT pos_type, COUNT(*) FROM words GROUP BY pos_type;
+ADJ|290
+ADP|357
+ADV|197
+AUX|39
+CCONJ|186
+DET|101
+INTJ|1
+NOUN|738
+NUM|11
+PART|123
+PRON|171
+PROPN|123
+PUNCT|16
+SCONJ|122
+VERB|525
+sqlite> SELECT lemma, COUNT(*) FROM words GROUP BY lemma ORDER BY COUNT(*) DESC LIMIT 30;
+в|77
+на|73
+з|62
+і|60
+як|53
+й|47
+не|45
+та|42
+Кайдаш|42
+а|40
+бути|36
+я|29
+до|29
+він|27
+ти|26
+у|25
+що|24
+то|24
+сказати|21
+вона|20
+вже|20
+той|19
+Карпо|19
+око|16
+хата|15
+син|15
+гора|15
+старий|14
+од|14
+стояти|13
+
+3. Статистика для трактату "Націоналізм" Дмитра Донцова:
+sqlite> SELECT pos_type, COUNT(*) FROM words GROUP BY pos_type;
+ADJ|349
+ADP|317
+ADV|250
+AUX|19
+CCONJ|241
+DET|124
+INTJ|1
+NOUN|807
+NUM|26
+PART|108
+PRON|146
+PROPN|48
+PUNCT|15
+SCONJ|47
+VERB|470
+sqlite> SELECT lemma, COUNT(*) FROM words GROUP BY lemma ORDER BY COUNT(*) DESC LIMIT 20;
+і|148
+не|55
+з|45
+на|44
+в|44
+він|40
+вони|35
+у|31
+а|28
+той|27
+до|25
+й|24
+та|23
+бути|22
+по|21
+як|19
+вагон|19
+дракон|17
+весь|17
+ще|16
+sqlite>
