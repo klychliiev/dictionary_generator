@@ -2,7 +2,7 @@
 SELECT pos_type, COUNT(*) FROM words GROUP BY pos_type; - підрахунок і групування слів за частиномовною належністю
 SELECT lemma, COUNT(*) FROM words GROUP BY lemma ORDER BY COUNT(*) DESC LIMIT 20; - підрахунок частоти для всіх слів тексту і відображення 20 найчастотніших з них
 
-1. Статистика для роману "Тигролови" Івана Багряного:
+1. Статистика для роману "Хіба ревуть воли..." Панаса Мирного:
 klychliievfx@klychliievfx-IdeaPad-3-15IML05:~/projects/words_dictionary$ sqlite3
 SQLite version 3.35.5 2021-04-19 18:32:05
 Enter ".help" for usage hints.
@@ -96,7 +96,7 @@ sqlite> SELECT lemma, COUNT(*) FROM words GROUP BY lemma ORDER BY COUNT(*) DESC 
 од|14
 стояти|13
 
-3. Статистика для трактату "Націоналізм" Дмитра Донцова:
+3. Статистика для роману "Тигролови" Івана Багряного:
 sqlite> SELECT pos_type, COUNT(*) FROM words GROUP BY pos_type;
 ADJ|349
 ADP|317
